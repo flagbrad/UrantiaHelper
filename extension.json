@@ -1,0 +1,27 @@
+{
+	"name": "UrantiaHelper",
+	"version": "0.1-alpha",
+	"author": "Brad Garner",
+	"url": "unpublished",
+	"descriptionmsg": "urantiahelper-desc",
+	"license-name": "GPL-2.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.28.0"
+	},
+	"type": "parserhook",
+	"MessagesDirs": {
+		"UrantiaHelperExtension": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"UrantiaHelperExtensionHooks": "src/UrantiaHelperExtensionHooks.php"
+	},
+	"ExtensionMessagesFiles": {
+		"UrantiaHelperExtensionMagic": "UrantiaHelperExtension.i18n.php"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "UrantiaHelperExtensionHooks::onParserFirstCallInit"
+	},
+	"manifest_version": 1
+}
