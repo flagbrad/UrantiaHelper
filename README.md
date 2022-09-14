@@ -6,14 +6,14 @@ This will produce a standard MediaWiki external link to a website where this tex
 Valid forms of references:
 * {{tub:195}} is for the start of Paper 195
 * {{tub:195:8}} is the for the start of Paper 195, Section 8
-* {{tub:195.8.3} is to go direct to the third paragraph of seciton 8 in Paper 195.
-* {{tub:195.8-10} opens section 8 of Paper 195, but allows writing whatever reading range information you'd like.
+* {{tub:195.8.3}} is to go direct to the third paragraph of seciton 8 in Paper 195.
+* {{tub:195.8-10}} opens section 8 of Paper 195, but allows writing whatever reading range information you'd like.
    * Someday perhaps this could be extended to somehow show ''only'' the range of text indicated.
 
 Installation
 ------------
 * Download this repo and place the files in a directory called UrantiaHelper in your MediaWiki extensions/ folder.
-* Add the following code to your LocalSettings.php: **wfLoadExtension( 'EventLogging' );**
+* Add the following code to your LocalSettings.php: **wfLoadExtension( 'UrantiaHelper' );**
 * Navigate to Special:Version on your wiki to verify that the extension is successfully installed.
 
 Limitations
