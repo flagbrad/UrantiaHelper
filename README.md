@@ -1,5 +1,5 @@
 # UrantiaHelper
-A MediaWiki parser extension that allows embedding of {{tub:195:9.8}} referenced to ''The Urantia Book'' in WikiText on MediaWiki pages.
+A MediaWiki parser extension that allows embedding of {{tub:195:9.8}} referenced to *The Urantia Book* in WikiText on MediaWiki pages.
 
 This will produce a standard MediaWiki external link to a website where this text can be read in English.
 
