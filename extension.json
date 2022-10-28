@@ -1,8 +1,8 @@
 {
 	"name": "UrantiaHelper",
-	"version": "0.1-alpha",
+	"version": "0.1",
 	"author": "Brad Garner",
-	"url": "unpublished",
+	"url": "https://github.com/flagbrad/UrantiaHelper",
 	"descriptionmsg": "urantiahelper-desc",
 	"license-name": "GPL-2.0-or-later",
 	"requires": {
