@@ -4,7 +4,8 @@ class UrantiaHelperExtensionHooks {
     // Register any render callbacks with the parser
     public static function onParserFirstCallInit( Parser $parser ) {
         // Create a function hook associating the "tub" magic word with renderTheUrantiaBook()
-        $parser->setFunctionHook( 'tub', [ self::class, 'renderTheUrantiaBook' ], SFH_NO_HASH );
+        $parser->setFunctionHook( 'tub',   [ self::class, 'renderTheUrantiaBook' ], SFH_NO_HASH );
+        $parser->setFunctionHook( 'bible', [ self::class, 'renderTheBible' ], SFH_NO_HASH );
     }
     
     // Render the output of {{tub:foo}}, where foo is a standard reference like 195:8.3.
@@ -74,6 +75,22 @@ class UrantiaHelperExtensionHooks {
         } catch (Excpetion $e) {
             return "__INVALID TUB REFERENCE__";
         }
+    }
+
+
+    public static function renderTheBible( Parser $parser, $param1 = '' ) {
+       $bibleref = explode(' ', $param1);
+       $biblebook = $bibleref[0];
+       $bibleref = explode(':', $bibleref[1]);
+       $biblechapter = $bibleref[0];
+
+       $url = "https://www.bible.com/bible/113/" . self::$_bibleComUrlPart[$biblebook] . "." . $biblechapter . ".NIVUK";
+       $linktext = $param1;
+       return [
+           "[$url {$linktext}]", 
+           'isHTML' => false,
+           'noparse' => false,
+       ];
     }
 
     static $_urantiaOrgPath = [
@@ -275,4 +292,74 @@ class UrantiaHelperExtensionHooks {
         'paper-195-after-pentecost',
         'paper-196-faith-jesus',
     ];
+
+    static $_bibleComUrlPart = [
+        'Genesis' => 'GEN',
+        'Exodus' => 'EXO',
+        'Leviticus' => 'LEV',
+        'Numbers' => 'NUM',
+        'Deuteronomy' => 'DEU',
+        'Joshua' => 'JOS',
+        'Judges' => 'JDG',
+        'Ruth' => 'RUT',
+        '1 Samuel' => '1SA',
+        '2 Samuel' => '2SA',
+        '1 Kings' => '1KI',
+        '2 Kings' => '2KI',
+        '1 Chronicles' => '1CH',
+        '2 Chronicles' => '2CH',
+        'Ezra' => 'EZR',
+        'Nehemiah' => 'NEH',
+        'Esther' => 'EST',
+        'Job' => 'JOB',
+        'Psalms' => 'PSA',
+        'Proverbs' => 'PRO',
+        'Ecclesiastes' => 'ECC',
+        'Song of Songs' => 'SNG',
+        'Isaiah' => 'ISA',
+        'Jeremiah' => 'JER',
+        'Lamentations' => 'LAM',
+        'Ezekiel' => 'EZK',
+        'Daniel' => 'DAN',
+        'Hosea' => 'HOS',
+        'Joel' => 'JOL',
+        'Amos' => 'AMO',
+        'Obadiah' => 'OBA',
+        'Jonah' => 'JON',
+        'Micah' => 'MIC',
+        'Nahum' => 'NAM',
+        'Habakkuk' => 'HAB',
+        'Zephaniah' => 'ZEP',
+        'Haggai' => 'HAG',
+        'Zechariah' => 'ZEC',
+        'Malachi' => 'MAL',
+        'Matthew' => 'MAT',
+        'Mark' => 'MRK',
+        'Luke' => 'LUK',
+        'John' => 'JHN',
+        'Acts' => 'ACT',
+        'Romans' => 'ROM',
+        '1 Corinthians' => '1CO',
+        '2 Corinthians' => '2CO',
+        'Galatians' => 'GAL',
+        'Ephesians' => 'EPH',
+        'Philippians' => 'PHP',
+        'Colossians' => 'COL',
+        '1 Thessalonians' => '1TH',
+        '2 Thessalonians' => '2TH',
+        '1 Timothy' => '1TI',
+        '2 Timothy' => '2TI',
+        'Titus' => 'TIT',
+        'Philemon' => 'PHM',
+        'Hebrews' => 'HEB',
+        'James' => 'JAS',
+        '1 Peter' => '1PE',
+        '2 Peter' => '2PE',
+        '1 John' => '1JN',
+        '2 John' => '2JN',
+        '3 John' => '3JN',
+        'Jude' => 'JUD',
+        'Revelation' => 'REV',
+    ];
+
 }

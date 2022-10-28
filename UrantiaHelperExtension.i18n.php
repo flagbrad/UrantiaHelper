@@ -11,4 +11,5 @@ $magicWords = [];
  */
 $magicWords['en'] = [
    'tub' => [ 0, 'tub' ],
+   'bible' => [ 0, 'bible' ],
 ];
