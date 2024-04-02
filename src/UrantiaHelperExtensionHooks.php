@@ -80,9 +80,16 @@ class UrantiaHelperExtensionHooks {
 
     public static function renderTheBible( Parser $parser, $param1 = '' ) {
        $bibleref = explode(' ', $param1);
-       $biblebook = $bibleref[0];
-       $bibleref = explode(':', $bibleref[1]);
-       $biblechapter = $bibleref[0];
+       if (is_numeric($bibleref[0])) {
+          // A numbered book
+          $biblebook = $bibleref[0] . ' ' . $bibleref[1];
+          $bibleref = explode(':', $bibleref[2]);
+          $biblechapter = $bibleref[0];
+       } else {
+          $biblebook = $bibleref[0];
+          $bibleref = explode(':', $bibleref[1]);
+          $biblechapter = $bibleref[0];
+       }
 
        $url = "https://www.bible.com/bible/113/" . self::$_bibleComUrlPart[$biblebook] . "." . $biblechapter . ".NIVUK";
        $linktext = $param1;
